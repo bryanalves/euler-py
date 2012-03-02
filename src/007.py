@@ -12,7 +12,8 @@ def euler_7(n):
     return next(itertools.islice(prime_gen(), n, None));
 
 def prime_gen():
-    n = 2
+    yield 2
+    n = 3
     while True:
         if is_prime(n):
             yield n
@@ -20,9 +21,6 @@ def prime_gen():
         n += 1
 
 def is_prime(n):
-    if n == 2:
-        return True
-
     if not n & 1:
         return False
 
