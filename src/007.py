@@ -9,7 +9,7 @@ What is the 10 001st prime number?
 import itertools
 
 def euler_7(n):
-    return list(itertools.islice(prime_gen(), n - 1, n))[0];
+    return next(itertools.islice(prime_gen(), n, None));
 
 def prime_gen():
     n = 2
