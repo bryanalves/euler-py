@@ -17,7 +17,7 @@ The following iterative sequence is defined for the set of positive integers:
 """
 
 def euler_14(maxint):
-    arr = [ chaincount2(i) for i in range(1, maxint) ]
+    arr = [ chaincount(i) for i in range(1, maxint) ]
     return arr.index(max(arr)) + 1
 
 def memoize(function):
@@ -38,6 +38,7 @@ def chaincount(n):
     python: 17.253 secs
     pypy: 14.890 secs
     """
+
     if n == 1:
         return 1
 
@@ -50,9 +51,10 @@ def chaincount(n):
 
 def chaincount2(n):
     """
-    python: 1:52.73
+    python: way too long
     pypy: 7.6 secs
     """
+
     retval = 1
 
     while n != 1:
@@ -63,6 +65,31 @@ def chaincount2(n):
 
         retval += 1
 
+    return retval
+
+cache = {}
+def chaincount3(n):
+    """
+    python: 10.769 secs
+    pypy: way too long
+    """
+
+    retval = 1
+    orig = n
+
+    while n != 1:
+        if n % 2 == 0:
+            n >>= 1
+        else:
+            n = (3 * n) + 1
+
+        if n in cache.keys():
+            cache[orig] = retval + cache[n]
+            return cache[orig]
+
+        retval += 1
+
+    cache[orig] = retval
     return retval
 
 if __name__ == "__main__":
