@@ -16,20 +16,11 @@ The following iterative sequence is defined for the set of positive integers:
         NOTE: Once the chain starts the terms are allowed to go above one million.
 """
 
+from lib import memoize
+
 def euler_14(maxint):
     arr = [ chaincount(i) for i in range(1, maxint) ]
     return arr.index(max(arr)) + 1
-
-def memoize(function):
-    cache = {}
-    def decorated_function(*args):
-        if args in cache:
-            return cache[args]
-        else:
-            val = function(*args)
-            cache[args] = val
-            return val
-    return decorated_function
 
 
 @memoize

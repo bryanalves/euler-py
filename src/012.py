@@ -23,6 +23,7 @@ import itertools
 import operator
 from functools import reduce
 from collections import defaultdict
+from lib import memoize
 
 def euler_12(target):
     """
@@ -75,17 +76,6 @@ def num_factors_via_prime(n):
 
     return reduce(operator.mul, (x + 1 for x in pfacts.values()), 1)
 
-
-def memoize(function):
-    cache = {}
-    def decorated_function(*args):
-        if args in cache:
-            return cache[args]
-        else:
-            val = function(*args)
-            cache[args] = val
-            return val
-    return decorated_function
 
 def prime_gen():
     yield 2
