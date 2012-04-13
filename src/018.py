@@ -24,10 +24,11 @@
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
 """
 
-from lib import get_max_children
+from lib import Triangle
 
 def euler_18(triangle):
-    return get_max_children(triangle, 0, 0)
+    t = Triangle(triangle)
+    return t.get_max_children(0, 0)
 
 if __name__ == "__main__":
     triangle = []

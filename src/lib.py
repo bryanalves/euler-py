@@ -10,13 +10,18 @@ def memoize(function):
             return val
     return decorated_function
 
-def get_max_children(triangle, row, col):
-    retval = triangle[row][col]
-    if row == len(triangle) - 1:
-        return retval 
+class Triangle:
+    def __init__(self, triangle):
+        self.triangle = triangle
 
-    return retval + max(
-        get_max_children(triangle, row + 1, col),
-        get_max_children(triangle, row + 1, col + 1)
-    )
+    @memoize
+    def get_max_children(self, row, col):
+        retval = self.triangle[row][col]
+        if row == len(self.triangle) - 1:
+            return retval
+
+        return retval + max(
+            self.get_max_children(row + 1, col),
+            self.get_max_children(row + 1, col + 1)
+        )
 
