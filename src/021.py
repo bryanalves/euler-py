@@ -21,18 +21,8 @@ def is_amicable(n):
 
     return sum_divisors(m) == n
 
-@lib.memoize
 def sum_divisors(n):
-    return sum(proper_divisors(n))
-
-def proper_divisors(n):
-    retval = [1]
-    for i in range(2, int(n ** 0.5) + 1):
-        if n % i == 0:
-            retval.append(i)
-            retval.append(n // i)
-
-    return retval
+    return sum(lib.proper_divisors(n))
 
 if __name__ == "__main__":
     print(euler_21(10000))

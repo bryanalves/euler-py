@@ -1,3 +1,11 @@
+def proper_divisors(n):
+    retval = [1]
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            retval.append(i)
+            retval.append(n // i)
+
+    return retval
 
 def memoize(function):
     cache = {}
