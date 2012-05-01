@@ -7,15 +7,10 @@ What is the smallest positive number that is evenly divisible by all of the numb
 """
 
 from functools import reduce
+import lib
 
 def euler_5(n):
-    return reduce(lcm, range(1, n))
-
-def lcm(a, b):
-    gcd, tmp = a, b
-    while tmp != 0:
-        gcd, tmp = tmp, gcd % tmp
-    return (a * b) // gcd
+    return reduce(lib.lcm, range(1, n))
 
 if __name__ == "__main__":
     print(euler_5(20))

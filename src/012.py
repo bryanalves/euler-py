@@ -23,7 +23,7 @@ import itertools
 import operator
 from functools import reduce
 from collections import defaultdict
-from lib import memoize
+import lib
 
 def euler_12(target):
     """
@@ -60,7 +60,7 @@ Alternative solution
 This solution uses prime factorization instead of raw factorization.
 """
 def num_factors_via_prime(n):
-    primes = prime_gen()
+    primes = lib.prime_gen()
     current_prime = next(primes)
 
     x = n
@@ -75,27 +75,6 @@ def num_factors_via_prime(n):
         pfacts[n] += 1
 
     return reduce(operator.mul, (x + 1 for x in pfacts.values()), 1)
-
-
-def prime_gen():
-    yield 2
-    n = 3
-    while True:
-        if is_prime(n):
-            yield n
-
-        n += 1
-
-@memoize
-def is_prime(n):
-    if not n & 1:
-        return False
-
-    for i in range(3, int((n ** 0.5)) + 1, 2):
-        if n % i == 0:
-            return False
-
-    return True
 
 if __name__ == "__main__":
     print(euler_12(500))
