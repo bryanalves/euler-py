@@ -7,6 +7,11 @@ def proper_divisors(n):
 
     return retval
 
+def fib_gen(a, b):
+    while True:
+        yield a
+        a, b = b, a + b
+
 def memoize(function):
     cache = {}
     def decorated_function(*args):
