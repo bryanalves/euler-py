@@ -18,7 +18,7 @@ import itertools
 
 def euler_29(max_a, max_b):
     gen = (a ** b for a, b in itertools.product(range(2, max_a + 1), range(2, max_b + 1)))
-    return len(sorted(set(gen)))
+    return len(set(gen))
 
 if __name__ == "__main__":
     print(euler_29(100, 100))
