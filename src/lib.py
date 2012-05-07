@@ -48,6 +48,9 @@ def memoize(function):
 
 @memoize
 def is_prime(n):
+    if n == 1: return False
+    if n == 2: return True
+
     if not n & 1:
         return False
 
