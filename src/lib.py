@@ -14,6 +14,10 @@ def gcd(a, b):
 
     return gcd
 
+def is_palindrome(x):
+    x_s = str(x)
+    return x_s == x_s[::-1]
+
 def prime_gen():
     yield 2
     n = 3
