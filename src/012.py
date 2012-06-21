@@ -31,18 +31,9 @@ def euler_12(target):
     num_factors2 uses prime factorization.  The prime factorization method, when memoized, runs significantly faster
     in python.  However, both methods are comparable when using pypy (~3.1 secs on a 1.6ghz core2 laptop)
     """
-    tempgen = (n for n in triangle_gen() if num_factors_standard(n) > target)
-    #tempgen = (n for n in triangle_gen() if num_factors_via_prime(n) > target)
+    tempgen = (n for n in lib.triangle_gen() if num_factors_standard(n) > target)
+    #tempgen = (n for n in lib.triangle_gen() if num_factors_via_prime(n) > target)
     return list(itertools.islice(tempgen, 0, 1))[0]
-
-def triangle_gen():
-    acc = 1
-    counter = 2
-
-    while True:
-        acc += counter
-        counter += 1
-        yield acc
 
 def num_factors_standard(n):
     retval = 0

@@ -7,6 +7,15 @@ def proper_divisors(n):
 
     return retval
 
+def triangle_gen():
+    acc = 1
+    counter = 2
+
+    while True:
+        acc += counter
+        counter += 1
+        yield acc
+
 def gcd(a, b):
     gcd, tmp = a, b
     while tmp != 0:
