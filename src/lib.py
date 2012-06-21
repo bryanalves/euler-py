@@ -69,6 +69,14 @@ def is_prime(n):
 
     return True
 
+@memoize
+def is_penta(n):
+    x = ((((24 * n)  + 1) ** 0.5) + 1) / 6
+    try:
+        return x == int(x)
+    except TypeError:
+        return False
+
 
 class Triangle:
     def __init__(self, triangle):

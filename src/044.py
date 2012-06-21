@@ -14,16 +14,8 @@ def penta_gen_decrementing(n):
         yield n * (3 * n - 1) / 2
         n -= 1
 
-@lib.memoize
-def is_penta(n):
-    x = ((((24 * n)  + 1) ** 0.5) + 1) / 6
-    try:
-        return x == int(x)
-    except TypeError:
-        return False
-
 def penta_filter(f):
-    return is_penta(f[0] + f[1]) and is_penta(f[0] - f[1])
+    return lib.is_penta(f[0] + f[1]) and lib.is_penta(f[0] - f[1])
 
 def euler_44():
     pentas = penta_gen()
