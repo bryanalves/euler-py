@@ -8,18 +8,10 @@ def euler_46():
     composite_odd = filter(lambda x: not lib.is_prime(x), r)
 
     for n in composite_odd:
-        if not any(map(lib.is_prime, (n - s for s in get_squares(n)))):
+        squares = itertools.takewhile(lambda x: x < n,
+                (2 * (i ** 2) for i in itertools.count()))
+        if not any(map(lib.is_prime, (n - s for s in squares))):
             return n
-
-def get_squares(n):
-    i = 1
-    retval = []
-
-    while 2 * (i ** 2) < n:
-        retval.append(2 * (i ** 2))
-        i += 1
-
-    return retval
 
 if __name__ == "__main__":
     print(euler_46())
